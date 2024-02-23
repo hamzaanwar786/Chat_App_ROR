@@ -1,15 +1,24 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @room %>
+<%= link_to "Back to", rooms_path, "data-turbo-frame": "_top" %>
 
-<p>
-  <%= link_to "Edit", edit_room_path(@room) %>
-  <%= link_to "Back", rooms_path %>
-</p>
+<turbo-frame id="room">
+  <%= render @room %>
+
+  <p>
+    <%= link_to "Edit", edit_room_path(@room) %>
+    <%= link_to "Back", rooms_path %>
+  </p>
+</turbo-frame>
+
+
 <div id="messages">
   <%= render @room.messages %>
 </div>
-<%= link_to "New Message", new_room_message_path(@room) %>
+<%#= link_to "New Message", new_room_message_path(@room) %>
 
+<turbo-frame id="new_message" src="<%= @room.id %>/messages/new" target="_top">
+  
+</turbo-frame>
 
 

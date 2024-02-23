@@ -1,9 +1,9 @@
 <h1>New Message</h1>
-
-<%= form_with(model: [@message.room, @message]) do |form| %>
-  <%= form.label :content %>
-  <%= form.text_field :content %>
-  <%= form.submit "Send" %>
-<% end %>
-
+<turbo-frame id="new_message" target=_top>
+  <%= form_with(model: [@message.room, @message]) do |form| %>
+    <%= form.label :content %>
+    <%= form.text_field :content %>
+    <%= form.submit "Send" %>
+  <% end %>
+</turbo-frame>
 <%= link_to 'Back', @message.room %>
